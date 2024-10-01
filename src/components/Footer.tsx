@@ -1,18 +1,21 @@
-// import Logo from "../assets/logo.png"
+import Logo from "../assets/footerlogo.png"
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 py-8">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h4 className="text-lg font-bold">YourCompany</h4>
-        <p className="mt-2 text-gray-600">We provide innovative solutions for your business.</p>
-        <div className="flex justify-center space-x-4 mt-4">
-          <a href="#" className="hover:underline">Home</a>
-          <a href="#" className="hover:underline">About</a>
-          <a href="#" className="hover:underline">Services</a>
-          <a href="#" className="hover:underline">Contact</a>
+    <footer className="bg-dark text-gray p-16">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row gap-5">
+          <Link to="/">Home</Link>
+          <Link to="about">About Us</Link>
+          <Link to="contact">Contact</Link>
         </div>
-        <div className="mt-6">&copy; 2024 YourCompany. All rights reserved.</div>
+        <img src={Logo} alt="Farzi Logo" className="scale-75" />
+        <div className="flex flex-col md:flex-row gap-5">
+          <Link to="events">Events</Link>
+          <Link to="career">Career</Link>
+          <Link to="privacy">Privacy Policy</Link>
+        </div>
       </div>
     </footer>
   );

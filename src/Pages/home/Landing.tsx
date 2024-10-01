@@ -1,8 +1,10 @@
-import React from 'react'
+import LandingVideo from "../../assets/Farzi-Cafe.mp4"
 
 function Landing() {
   return (
-    <div>Landing</div>
+    <div>
+        <video src={LandingVideo}  className="w-screen min-h-screen"></video>
+    </div>
   )
 }
 

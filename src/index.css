@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: quesha;
+  src: url("./assets/quesha/Quesha.ttf");
+}
+
+* {
+  transition: all ease-in-out 0.3s;
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #dedede;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar {
+  background-color: #f6f1f1;
+  width: 10px;
+}
+
+.quesha{
+  font-family: quesha;
+}
