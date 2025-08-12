@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaUtensils, FaWineGlassAlt, FaInstagram, FaFacebook } from 'react-icons/fa';
-import { MdDeliveryDining, MdEmail } from 'react-icons/md';
+import { FaBars, FaTimes, FaWineGlassAlt, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from '../assets/logo.png';
 
@@ -21,7 +21,6 @@ export default function Navbar() {
     { name: 'Home', href: '/', icon: null },
     { name: 'Menu', href: '/menu' },
     { name: 'Gallery', href: '/gallery', icon: null },
-    { name: 'Delivery', href: '/delivery' },
     { name: 'Contact', href: '/contact', icon: null }
   ];
 

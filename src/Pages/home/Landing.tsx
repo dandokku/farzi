@@ -6,7 +6,7 @@ import ChefImage from '../../assets/chef.svg';
 export default function Landing() {
   return (
     <section 
-      className="relative overflow-hidden pt-20 pb-32"
+      className="relative overflow-hidden pt-28 pb-32"
       style={{ backgroundColor: '#F6F5F5' }}
     >
       {/* Background texture */}
