@@ -19,9 +19,9 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'Home', href: '/', icon: null },
-    { name: 'Menu', href: '/menu', icon: <FaUtensils className="mr-2" /> },
+    { name: 'Menu', href: '/menu' },
     { name: 'Gallery', href: '/gallery', icon: null },
-    { name: 'Delivery', href: '/delivery', icon: <MdDeliveryDining className="mr-2" /> },
+    { name: 'Delivery', href: '/delivery' },
     { name: 'Contact', href: '/contact', icon: null }
   ];
 
