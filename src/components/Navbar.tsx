@@ -1,96 +1,89 @@
 import { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaSearch } from 'react-icons/fa';
+import { FaBars, FaTimes, FaUtensils, FaWineGlassAlt } from 'react-icons/fa';
+import { MdDeliveryDining } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
-import Logo from '../assets/logo.png';
+import Logo from '../assets/logo.png'; // Replace with your restaurant logo
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Close mobile menu when clicking on a link
-  const closeMobileMenu = () => setNavOpen(false);
-
-  // Add scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Menu', href: '/menu' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Delivery', href: '/delivery' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white/90 backdrop-blur-sm py-4'}`}>
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="flex-shrink-0"
-          >
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-saffron-700 shadow-lg' : 'bg-saffron-600/90 backdrop-blur-sm'}`}>
+      {/* Top decorative border */}
+      <div className="h-1 bg-gradient-to-r from-saffron-400 via-turmeric-500 to-saffron-400"></div>
+      
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center py-3">
+          {/* Logo with cultural motif */}
+          <div className="flex items-center space-x-2">
             <img 
               src={Logo} 
-              alt="Company Logo" 
-              className="h-10 w-auto" 
-              width={160}
-              height={40}
+              alt="Royal Spice Logo" 
+              className={`h-12 transition-all duration-300 ${scrolled ? 'h-10' : 'h-12'}`}
             />
-          </motion.div>
+            <span className="hidden md:block text-white font-serif text-xl font-bold tracking-wider">
+              Farzi Cafe
+            </span>
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <ul className="flex space-x-8">
-              {navItems.map((item) => (
-                <li key={item.name}>
-                  <a 
-                    href={item.href} 
-                    className="text-gray-700 hover:text-primary-500 transition-colors duration-200 font-medium"
-                    aria-label={item.name}
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            
-            {/* Search and CTA could be added here */}
-            <div className="flex items-center space-x-4 ml-6">
-              <button 
-                aria-label="Search"
-                className="text-gray-600 hover:text-primary-500 transition-colors"
+          <ul className="hidden md:flex items-center space-x-1">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <a
+                  href={item.href}
+                  className="flex items-center px-4 py-2 text-white hover:bg-saffron-500 rounded-lg transition-all duration-300 group"
+                >
+                  {item.icon && item.icon}
+                  <span>{item.name}</span>
+                  <span className="block h-0.5 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                </a>
+              </li>
+            ))}
+            {/* Special CTA Button */}
+            <li>
+              <a
+                href="#reservations"
+                className="ml-2 flex items-center px-4 py-2 bg-white text-saffron-700 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-md hover:shadow-lg"
               >
-                <FaSearch className="h-5 w-5" />
-              </button>
-              <button className="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 font-medium">
-                Get Started
-              </button>
-            </div>
-          </div>
+                <FaWineGlassAlt className="mr-2" />
+                Reserve Table
+              </a>
+            </li>
+          </ul>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setNavOpen(!navOpen)}
-              className="text-gray-700 hover:text-primary-500 focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              {navOpen ? (
-                <FaTimes className="h-6 w-6" />
-              ) : (
-                <FaBars className="h-6 w-6" />
-              )}
-            </button>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-white focus:outline-none"
+            onClick={() => setNavOpen(!navOpen)}
+            aria-expanded={navOpen}
+          >
+            {navOpen ? (
+              <FaTimes className="h-6 w-6" />
+            ) : (
+              <FaBars className="h-6 w-6" />
+            )}
+          </button>
         </div>
 
-        {/* Mobile Navigation with animations */}
+        {/* Mobile Menu with Indian-inspired design */}
         <AnimatePresence>
           {navOpen && (
             <motion.div
@@ -98,35 +91,46 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-saffron-700 rounded-b-lg shadow-xl"
             >
-              <ul className="px-2 pt-2 pb-4 space-y-2">
-                {navItems.map((item) => (
-                  <motion.li 
+              <ul className="py-2 px-4 space-y-1">
+                {navItems.map((item, index) => (
+                  <motion.li
                     key={item.name}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
                   >
                     <a
                       href={item.href}
-                      onClick={closeMobileMenu}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-500 hover:bg-gray-50"
+                      className="flex items-center px-4 py-3 text-white hover:bg-saffron-600 rounded-lg transition-colors duration-200"
+                      onClick={() => setNavOpen(false)}
                     >
-                      {item.name}
+                      {item.icon && item.icon}
+                      <span>{item.name}</span>
                     </a>
                   </motion.li>
                 ))}
-                <li className="pt-2">
-                  <button className="w-full bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 font-medium">
-                    Get Started
-                  </button>
-                </li>
+                <motion.li
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
+                  className="pt-2 border-t border-saffron-500/30"
+                >
+                  <a
+                    href="#reservations"
+                    className="flex items-center justify-center px-4 py-3 bg-white text-saffron-700 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                    onClick={() => setNavOpen(false)}
+                  >
+                    <FaWineGlassAlt className="mr-2" />
+                    Reserve Table
+                  </a>
+                </motion.li>
               </ul>
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 }
