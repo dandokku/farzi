@@ -43,8 +43,6 @@ export default function Footer() {
                 { name: 'Home', to: '/' },
                 { name: 'Menu', to: '/menu' },
                 { name: 'Gallery', to: '/gallery' },
-                { name: 'Events', to: '/events' },
-                { name: 'Careers', to: '/careers' },
                 { name: 'Contact', to: '/contact' }
               ].map((link) => (
                 <Link 
