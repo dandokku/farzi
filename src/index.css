@@ -8,8 +8,8 @@
 }
 
 @theme {
-  --color-saffron-400: #FF9933;
-  --color-saffron-500: #FF8C00;
+  --color-saffron-400: red;
+  --color-saffron-500: #FC00;
   --color-saffron-600: #FF7F00;
   --color-saffron-700: #E67300;
   --color-turmeric-500: #FFD700;
