@@ -1,122 +1,231 @@
-import { motion } from 'framer-motion';
-import { FaUtensils, FaRegCalendarAlt } from 'react-icons/fa';
-import heroImage from '../../assets/markus-spiske-ieJUV-Mrn3g-unsplash.jpg'; // Replace with your high-quality restaurant image
+import Logo from "../assets/footerlogo.png";
+import { Link } from "react-router-dom";
+import { FaInstagram, FaFacebookF, FaTwitter, FaTripadvisor } from "react-icons/fa";
+import { MdOutlineDeliveryDining, MdOutlineLocalPhone } from "react-icons/md";
+import { IoTimeOutline } from "react-icons/io5";
 
-export default function Landing() {
+export default function Footer() {
   return (
-    <section 
-      className="relative h-screen flex items-center justify-center overflow-hidden"
-      style={{ backgroundColor: '#1a1a1a' }}
+    <footer 
+      className="pt-16 pb-8" 
+      style={{ 
+        backgroundColor: '#812B1B',
+        borderTop: '2px solid #F6F5F5'
+      }}
     >
-      {/* Background image with overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Farzi Cafe signature dishes"
-          className="w-full h-full object-cover"
-          style={{ opacity: 0.6 }}
-        />
-        <div 
-          className="absolute inset-0"
-          style={{ 
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(26,26,26,0.8) 100%)'
-          }}
-        ></div>
-      </div>
-
-      {/* Hero content */}
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          {/* Tagline */}
-          <div 
-            className="inline-block px-4 py-2 mb-6 rounded-full"
-            style={{ backgroundColor: 'rgba(255, 140, 0, 0.2)' }}
-          >
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          
+          {/* Restaurant Info */}
+          <div className="flex flex-col items-center md:items-start">
+            <img 
+              src={Logo} 
+              alt="Restaurant Logo" 
+              className="h-20 mb-6"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
             <p 
-              className="font-medium tracking-wider"
-              style={{ color: '#FF8C00' }}
+              className="mb-6 leading-relaxed text-center md:text-left"
+              style={{ color: '#F6F5F5' }}
             >
-              MODERN INDIAN GASTRONOMY
+              Experience our modern culinary approach that blends tradition with innovation.
             </p>
+            <div className="flex space-x-4">
+              {[
+                { icon: <FaInstagram className="text-xl" />, href: "#" },
+                { icon: <FaFacebookF className="text-xl" />, href: "#" },
+                { icon: <FaTwitter className="text-xl" />, href: "#" },
+                { icon: <FaTripadvisor className="text-xl" />, href: "#" }
+              ].map((social, index) => (
+                <a 
+                  key={index}
+                  href={social.href}
+                  className="transition-colors duration-300 hover:opacity-80"
+                  style={{ color: '#F6F5F5' }}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Main headline */}
-          <h1 
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
-            style={{ color: '#ffffff', fontFamily: "'Playfair Display', serif" }}
-          >
-            Reimagining <span style={{ color: '#FF8C00' }}>Indian</span> Flavors
-          </h1>
-
-          {/* Subheading */}
-          <p 
-            className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto"
-            style={{ color: '#e6d8b5' }}
-          >
-            Experience culinary innovation where traditional Indian recipes meet contemporary techniques
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/menu"
-              className="flex items-center justify-center px-8 py-4 rounded-lg font-medium"
+          {/* Quick Links */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 
+              className="text-xl font-bold mb-6 pb-2"
               style={{ 
-                backgroundColor: '#FF8C00',
-                color: '#ffffff',
-                hoverBackgroundColor: '#E67300'
+                color: '#FFFFFF',
+                borderBottom: '1px solid rgba(246, 245, 245, 0.3)'
               }}
             >
-              <FaUtensils className="mr-3" />
-              Explore Our Menu
-            </motion.a>
-            
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="/reservations"
-              className="flex items-center justify-center px-8 py-4 rounded-lg font-medium border"
-              style={{ 
-                borderColor: '#FF8C00',
-                color: '#ffffff',
-                hoverBackgroundColor: 'rgba(255, 140, 0, 0.1)'
-              }}
-            >
-              <FaRegCalendarAlt className="mr-3" />
-              Book a Table
-            </motion.a>
+              Quick Links
+            </h3>
+            <nav className="flex flex-col space-y-3">
+              {[
+                { name: 'Home', to: '/' },
+                { name: 'Our Menu', to: '/menu' },
+                { name: 'Our Story', to: '/about' },
+                { name: 'Gallery', to: '/gallery' }
+              ].map((link) => (
+                <Link 
+                  key={link.name}
+                  to={link.to}
+                  className="flex items-center transition-colors duration-300 hover:translate-x-1"
+                  style={{ 
+                    color: '#F6F5F5',
+                  }}
+                >
+                  <span 
+                    className="w-2 h-2 rounded-full mr-3 transition-all duration-300"
+                    style={{ backgroundColor: '#F6F5F5' }}
+                  ></span>
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
           </div>
-        </motion.div>
-      </div>
 
-      {/* Scrolling indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          style={{ color: '#ffffff' }}
+          {/* Contact Info */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 
+              className="text-xl font-bold mb-6 pb-2"
+              style={{ 
+                color: '#FFFFFF',
+                borderBottom: '1px solid rgba(246, 245, 245, 0.3)'
+              }}
+            >
+              Contact Us
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <MdOutlineLocalPhone 
+                  className="mt-1 mr-3 flex-shrink-0" 
+                  style={{ color: '#F6F5F5' }}
+                />
+                <div>
+                  <p style={{ color: '#F6F5F5', fontWeight: '500' }}>Reservations</p>
+                  <a 
+                    href="tel:+11234567890"
+                    className="transition-colors duration-300 hover:underline"
+                    style={{ 
+                      color: '#FFFFFF',
+                    }}
+                  >
+                    +1 (123) 456-7890
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <MdOutlineDeliveryDining 
+                  className="mt-1 mr-3 flex-shrink-0" 
+                  style={{ color: '#F6F5F5' }}
+                />
+                <div>
+                  <p style={{ color: '#F6F5F5', fontWeight: '500' }}>Delivery</p>
+                  <a 
+                    href="tel:+11234567891"
+                    className="transition-colors duration-300 hover:underline"
+                    style={{ 
+                      color: '#FFFFFF',
+                    }}
+                  >
+                    +1 (123) 456-7891
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <IoTimeOutline 
+                  className="mt-1 mr-3 flex-shrink-0" 
+                  style={{ color: '#F6F5F5' }}
+                />
+                <div>
+                  <p style={{ color: '#F6F5F5', fontWeight: '500' }}>Hours</p>
+                  <p style={{ color: '#FFFFFF' }}>
+                    Mon-Fri: 11AM - 10PM<br />
+                    Sat-Sun: 10AM - 11PM
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 
+              className="text-xl font-bold mb-6 pb-2"
+              style={{ 
+                color: '#FFFFFF',
+                borderBottom: '1px solid rgba(246, 245, 245, 0.3)'
+              }}
+            >
+              Newsletter
+            </h3>
+            <p 
+              className="mb-4 text-center md:text-left"
+              style={{ color: '#F6F5F5' }}
+            >
+              Subscribe for exclusive offers and events
+            </p>
+            <form className="w-full">
+              <div className="flex flex-col sm:flex-row gap-2">
+                <input 
+                  type="email" 
+                  placeholder="Your email" 
+                  className="flex-grow px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-white"
+                  style={{ 
+                    backgroundColor: 'rgba(246, 245, 245, 0.1)',
+                    border: '1px solid rgba(246, 245, 245, 0.3)',
+                    color: '#FFFFFF',
+                  }}
+                />
+                <button 
+                  type="submit" 
+                  className="px-6 py-2 font-medium rounded transition-colors duration-300 hover:bg-opacity-90"
+                  style={{ 
+                    backgroundColor: '#F6F5F5',
+                    color: '#812B1B',
+                  }}
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {/* Bottom footer */}
+        <div 
+          className="pt-8 flex flex-col md:flex-row justify-between items-center"
+          style={{ borderTop: '1px solid rgba(246, 245, 245, 0.3)' }}
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 md:mb-0">
+            {[
+              { name: 'Privacy Policy', to: '/privacy' },
+              { name: 'Terms of Service', to: '/terms' },
+              { name: 'Careers', to: '/careers' },
+              { name: 'Contact Us', to: '/contact' }
+            ].map((link) => (
+              <Link 
+                key={link.name}
+                to={link.to}
+                className="transition-colors duration-300 text-sm hover:underline"
+                style={{ 
+                  color: '#F6F5F5',
+                }}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+          <p 
+            className="text-sm"
+            style={{ color: 'rgba(246, 245, 245, 0.8)' }}
           >
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-          </svg>
-        </motion.div>
+            &copy; {new Date().getFullYear()} Restaurant Name. All rights reserved.
+          </p>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 }

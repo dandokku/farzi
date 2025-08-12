@@ -1,4 +1,4 @@
-import Logo from "../assets/footerlogo.png";
+import Logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaFacebookF, FaTwitter, FaTripadvisor } from "react-icons/fa";
 import { MdOutlineDeliveryDining, MdOutlineLocalPhone } from "react-icons/md";
