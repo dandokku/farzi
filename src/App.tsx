@@ -5,6 +5,7 @@ import Home from './Pages/home/Home'
 import Contact from './Pages/contact/Contact'
 import Reservations from './Pages/reservations/Reservations'
 import Menu from './Pages/menu/Menu'
+import Gallery from './Pages/gallery/Gallery'
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='contact' element={<Contact />} />
           <Route path='reservations' element={<Reservations />} />
           <Route path='menu' element={<Menu />} />
+          <Route path='gallery' element={<Gallery />} />
         </Route>
       </Routes>
     </BrowserRouter>
