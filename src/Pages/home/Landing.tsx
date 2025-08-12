@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaUtensils, FaWineGlassAlt, FaArrowRight } from 'react-icons/fa';
 import { MdDeliveryDining } from 'react-icons/md';
+import Chef from '../../assets/chef.svg';
 
 export default function Landing() {
   return (
@@ -94,13 +95,11 @@ export default function Landing() {
                 className="relative rounded-2xl overflow-hidden shadow-2xl"
                 style={{
                   aspectRatio: '1/1',
-                  backgroundColor: '#812B1B',
-                  backgroundImage: 'linear-gradient(to bottom right, #812B1B, #A53E2B)'
                 }}
               >
                 {/* This would be your hero image */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <img src="https://images.unsplash.com/photo-1574653853027-5382a3d23a15?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTIyfHxpbmRpYW4lMjBmb29kfGVufDB8fDB8fHww" alt="" />
+                  <img src={Chef} alt="" />
                 </div>
                 
                 {/* Decorative elements */}
