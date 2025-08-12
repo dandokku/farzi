@@ -6,9 +6,20 @@ import { IoTimeOutline } from "react-icons/io5";
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-800 text-golden-100 pt-16 pb-8 border-t-4 border-saffron-500">
+    <footer 
+      className="pt-16 pb-8" 
+      style={{ 
+        backgroundColor: '#1a1a1a',
+        borderTop: '4px solid #FF8C00'
+      }}
+    >
       {/* Decorative top border */}
-      <div className="h-1 bg-gradient-to-r from-saffron-400 via-turmeric-500 to-saffron-400 mb-12"></div>
+      <div 
+        className="h-1 mb-12 w-full"
+        style={{
+          background: 'linear-gradient(to right, #FF9933, #FFCC00, #FF9933)'
+        }}
+      ></div>
       
       <div className="max-w-7xl mx-auto px-6">
         {/* Main footer content */}
@@ -18,94 +29,130 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <img 
               src={Logo} 
-              alt="Royal Spice Logo" 
-              className="h-20 mb-6 filter brightness-0 invert opacity-90"
+              alt="Farzi Cafe Logo" 
+              className="h-20 mb-6"
+              style={{ filter: 'brightness(0) invert(1) opacity(0.9)' }}
             />
-            <p className="text-golden-200 text-center md:text-left mb-6 leading-relaxed">
-              Experience authentic Indian cuisine crafted with generations-old recipes and modern culinary artistry.
+            <p 
+              className="mb-6 leading-relaxed text-center md:text-left"
+              style={{ color: '#e6d8b5' }}
+            >
+              Experience modern Indian cuisine that plays with tradition and innovation.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-golden-300 hover:text-white transition-colors duration-300">
-                <FaInstagram className="text-xl" />
-              </a>
-              <a href="#" className="text-golden-300 hover:text-white transition-colors duration-300">
-                <FaFacebookF className="text-xl" />
-              </a>
-              <a href="#" className="text-golden-300 hover:text-white transition-colors duration-300">
-                <FaTwitter className="text-xl" />
-              </a>
-              <a href="#" className="text-golden-300 hover:text-white transition-colors duration-300">
-                <FaTripadvisor className="text-xl" />
-              </a>
+              {[
+                { icon: <FaInstagram className="text-xl" />, href: "#" },
+                { icon: <FaFacebookF className="text-xl" />, href: "#" },
+                { icon: <FaTwitter className="text-xl" />, href: "#" },
+                { icon: <FaTripadvisor className="text-xl" />, href: "#" }
+              ].map((social, index) => (
+                <a 
+                  key={index}
+                  href={social.href}
+                  className="transition-colors duration-300"
+                  style={{ color: '#d4af37', hoverColor: '#ffffff' }}
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-white font-serif text-xl font-bold mb-6 border-b border-golden-300/30 pb-2">
+            <h3 
+              className="font-serif text-xl font-bold mb-6 pb-2"
+              style={{ 
+                color: '#ffffff',
+                borderBottom: '1px solid rgba(212, 175, 55, 0.3)'
+              }}
+            >
               Quick Links
             </h3>
             <nav className="flex flex-col space-y-3">
-              <Link 
-                to="/" 
-                className="text-golden-200 hover:text-saffron-400 transition-colors duration-300 flex items-center"
-              >
-                <span className="w-2 h-2 bg-saffron-400 rounded-full mr-3"></span>
-                Home
-              </Link>
-              <Link 
-                to="/menu" 
-                className="text-golden-200 hover:text-saffron-400 transition-colors duration-300 flex items-center"
-              >
-                <span className="w-2 h-2 bg-saffron-400 rounded-full mr-3"></span>
-                Our Menu
-              </Link>
-              <Link 
-                to="/about" 
-                className="text-golden-200 hover:text-saffron-400 transition-colors duration-300 flex items-center"
-              >
-                <span className="w-2 h-2 bg-saffron-400 rounded-full mr-3"></span>
-                Our Story
-              </Link>
-              <Link 
-                to="/gallery" 
-                className="text-golden-200 hover:text-saffron-400 transition-colors duration-300 flex items-center"
-              >
-                <span className="w-2 h-2 bg-saffron-400 rounded-full mr-3"></span>
-                Gallery
-              </Link>
+              {[
+                { name: 'Home', to: '/' },
+                { name: 'Our Menu', to: '/menu' },
+                { name: 'Our Story', to: '/about' },
+                { name: 'Gallery', to: '/gallery' }
+              ].map((link) => (
+                <Link 
+                  key={link.name}
+                  to={link.to}
+                  className="flex items-center transition-colors duration-300"
+                  style={{ 
+                    color: '#e6d8b5',
+                    hoverColor: '#FF8C00'
+                  }}
+                >
+                  <span 
+                    className="w-2 h-2 rounded-full mr-3"
+                    style={{ backgroundColor: '#FF8C00' }}
+                  ></span>
+                  {link.name}
+                </Link>
+              ))}
             </nav>
           </div>
 
           {/* Contact Info */}
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-white font-serif text-xl font-bold mb-6 border-b border-golden-300/30 pb-2">
+            <h3 
+              className="font-serif text-xl font-bold mb-6 pb-2"
+              style={{ 
+                color: '#ffffff',
+                borderBottom: '1px solid rgba(212, 175, 55, 0.3)'
+              }}
+            >
               Contact Us
             </h3>
             <div className="space-y-4">
               <div className="flex items-start">
-                <MdOutlineLocalPhone className="text-saffron-400 mt-1 mr-3 flex-shrink-0" />
+                <MdOutlineLocalPhone 
+                  className="mt-1 mr-3 flex-shrink-0" 
+                  style={{ color: '#FF8C00' }}
+                />
                 <div>
-                  <p className="text-golden-200 font-medium">Reservations</p>
-                  <a href="tel:+11234567890" className="text-golden-300 hover:text-white transition-colors duration-300">
+                  <p style={{ color: '#e6d8b5', fontWeight: '500' }}>Reservations</p>
+                  <a 
+                    href="tel:+11234567890"
+                    className="transition-colors duration-300"
+                    style={{ 
+                      color: '#d4af37',
+                      hoverColor: '#ffffff'
+                    }}
+                  >
                     +1 (123) 456-7890
                   </a>
                 </div>
               </div>
               <div className="flex items-start">
-                <MdOutlineDeliveryDining className="text-saffron-400 mt-1 mr-3 flex-shrink-0" />
+                <MdOutlineDeliveryDining 
+                  className="mt-1 mr-3 flex-shrink-0" 
+                  style={{ color: '#FF8C00' }}
+                />
                 <div>
-                  <p className="text-golden-200 font-medium">Delivery</p>
-                  <a href="tel:+11234567891" className="text-golden-300 hover:text-white transition-colors duration-300">
+                  <p style={{ color: '#e6d8b5', fontWeight: '500' }}>Delivery</p>
+                  <a 
+                    href="tel:+11234567891"
+                    className="transition-colors duration-300"
+                    style={{ 
+                      color: '#d4af37',
+                      hoverColor: '#ffffff'
+                    }}
+                  >
                     +1 (123) 456-7891
                   </a>
                 </div>
               </div>
               <div className="flex items-start">
-                <IoTimeOutline className="text-saffron-400 mt-1 mr-3 flex-shrink-0" />
+                <IoTimeOutline 
+                  className="mt-1 mr-3 flex-shrink-0" 
+                  style={{ color: '#FF8C00' }}
+                />
                 <div>
-                  <p className="text-golden-200 font-medium">Hours</p>
-                  <p className="text-golden-300">
+                  <p style={{ color: '#e6d8b5', fontWeight: '500' }}>Hours</p>
+                  <p style={{ color: '#d4af37' }}>
                     Mon-Fri: 11AM - 10PM<br />
                     Sat-Sun: 10AM - 11PM
                   </p>
@@ -116,10 +163,19 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-white font-serif text-xl font-bold mb-6 border-b border-golden-300/30 pb-2">
+            <h3 
+              className="font-serif text-xl font-bold mb-6 pb-2"
+              style={{ 
+                color: '#ffffff',
+                borderBottom: '1px solid rgba(212, 175, 55, 0.3)'
+              }}
+            >
               Newsletter
             </h3>
-            <p className="text-golden-200 mb-4 text-center md:text-left">
+            <p 
+              className="mb-4 text-center md:text-left"
+              style={{ color: '#e6d8b5' }}
+            >
               Subscribe for exclusive offers and events
             </p>
             <form className="w-full">
@@ -127,11 +183,22 @@ export default function Footer() {
                 <input 
                   type="email" 
                   placeholder="Your email" 
-                  className="flex-grow px-4 py-2 rounded bg-dark-700 border border-golden-300/20 text-white focus:outline-none focus:ring-1 focus:ring-saffron-400"
+                  className="flex-grow px-4 py-2 rounded focus:outline-none"
+                  style={{ 
+                    backgroundColor: '#2d2d2d',
+                    border: '1px solid rgba(212, 175, 55, 0.2)',
+                    color: '#ffffff',
+                    focusRing: '1px solid #FF8C00'
+                  }}
                 />
                 <button 
                   type="submit" 
-                  className="px-6 py-2 bg-saffron-600 hover:bg-saffron-700 text-white font-medium rounded transition-colors duration-300"
+                  className="px-6 py-2 font-medium rounded transition-colors duration-300"
+                  style={{ 
+                    backgroundColor: '#FF7F00',
+                    color: '#ffffff',
+                    hoverBackgroundColor: '#E67300'
+                  }}
                 >
                   Subscribe
                 </button>
@@ -141,35 +208,35 @@ export default function Footer() {
         </div>
 
         {/* Bottom footer */}
-        <div className="border-t border-golden-300/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div 
+          className="pt-8 flex flex-col md:flex-row justify-between items-center"
+          style={{ borderTop: '1px solid rgba(212, 175, 55, 0.2)' }}
+        >
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 md:mb-0">
-            <Link 
-              to="/privacy" 
-              className="text-golden-300 hover:text-white transition-colors duration-300 text-sm"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              to="/terms" 
-              className="text-golden-300 hover:text-white transition-colors duration-300 text-sm"
-            >
-              Terms of Service
-            </Link>
-            <Link 
-              to="/careers" 
-              className="text-golden-300 hover:text-white transition-colors duration-300 text-sm"
-            >
-              Careers
-            </Link>
-            <Link 
-              to="/contact" 
-              className="text-golden-300 hover:text-white transition-colors duration-300 text-sm"
-            >
-              Contact Us
-            </Link>
+            {[
+              { name: 'Privacy Policy', to: '/privacy' },
+              { name: 'Terms of Service', to: '/terms' },
+              { name: 'Careers', to: '/careers' },
+              { name: 'Contact Us', to: '/contact' }
+            ].map((link) => (
+              <Link 
+                key={link.name}
+                to={link.to}
+                className="transition-colors duration-300 text-sm"
+                style={{ 
+                  color: '#d4af37',
+                  hoverColor: '#ffffff'
+                }}
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
-          <p className="text-golden-300/80 text-sm">
-            &copy; {new Date().getFullYear()} Royal Spice. All rights reserved.
+          <p 
+            className="text-sm"
+            style={{ color: 'rgba(212, 175, 55, 0.8)' }}
+          >
+            &copy; {new Date().getFullYear()} Farzi Cafe. All rights reserved.
           </p>
         </div>
       </div>
