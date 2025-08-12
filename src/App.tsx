@@ -6,6 +6,9 @@ import Contact from './Pages/contact/Contact'
 import About from './Pages/about/About'
 import Career from './Pages/career/Career'
 
+
+
+
 function App() {
 
   return (
