@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaBars, FaBlind } from 'react-icons/fa';
+import Logo from '../assets/logo.png';
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Navbar() {
           <li><a href="#" className="hover:text-gray-600">Home</a></li>
           <li><a href="#" className="hover:text-gray-600">Blog</a></li>
         </ul>
-        <h1 className="text-2xl font-bold">BrandLogo</h1>
+        <img src={Logo} alt="" />
         <ul className="hidden md:flex space-x-6">
           <li><a href="#" className="hover:text-gray-600">Services</a></li>
           <li><a href="#" className="hover:text-gray-600">Contact</a></li>
