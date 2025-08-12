@@ -10,7 +10,7 @@ function Home() {
       <Landing />
       <Welcome />
       <GastronomicIllusion />
-      <Cta />
+      {/* <Cta /> */}
     </div>
   )
 }

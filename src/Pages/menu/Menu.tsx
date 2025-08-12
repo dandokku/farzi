@@ -5,66 +5,67 @@ import { FaLeaf, FaPepperHot, FaWineGlassAlt } from 'react-icons/fa';
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('starters');
 
-  const menuItems = {
+const menuItems = {
   starters: [
-    { name: 'Deconstructed Samosa', description: 'Crispy pastry with spiced potato foam, chutney gel', price: '$12', vegetarian: true, spicy: false },
-    { name: 'Tandoori Scallops', description: 'Seared scallops with smoked paprika foam, mint chutney', price: '$18', vegetarian: false, spicy: true },
-    { name: 'Molecular Chaat', description: 'Spherified yogurt, tamarind air, sev crisp', price: '$14', vegetarian: true, spicy: false },
-    { name: 'Truffle Dhokla Bites', description: 'Steamed gram flour cake with truffle oil mist', price: '$16', vegetarian: true, spicy: false },
-    { name: 'Compressed Watermelon Salad', description: 'Feta snow, basil air, balsamic pearls', price: '$15', vegetarian: true, spicy: false },
-    { name: 'Goat Cheese Pani Puri', description: 'Crisp puris with goat cheese espuma and jalapeño caviar', price: '$17', vegetarian: true, spicy: true },
-    { name: 'Carrot Ginger Espuma Soup', description: 'Served in a test tube with coconut foam', price: '$14', vegetarian: true, spicy: false },
-    { name: 'Seaweed Tempura Clouds', description: 'Nori tempura with miso vapor', price: '$16', vegetarian: false, spicy: false },
-    { name: 'Smoked Eggplant Velouté', description: 'Eggplant purée with edible ash', price: '$15', vegetarian: true, spicy: false },
-    { name: 'Pickled Beet Tartare', description: 'Beetroot pearls with horseradish air', price: '$14', vegetarian: true, spicy: false },
-    { name: 'Nitrogen Popcorn Shrimp', description: 'Tempura shrimp with instant-freeze popcorn dust', price: '$18', vegetarian: false, spicy: false },
-    { name: 'Avocado Wasabi Sphere', description: 'Encased avocado purée with wasabi microfoam', price: '$16', vegetarian: true, spicy: true },
-    { name: 'Charred Corn Espuma Cups', description: 'Corn espuma in edible spoons', price: '$14', vegetarian: true, spicy: false }
+    { name: 'Crispy Samosa Bites', description: 'Flaky pastry with spiced potato filling and chutney', price: '$12', vegetarian: true, spicy: false },
+    { name: 'Tandoori Scallops', description: 'Grilled scallops with smoky seasoning and mint sauce', price: '$18', vegetarian: false, spicy: true },
+    { name: 'Chaat Platter', description: 'Yogurt, chutney, and crunchy sev mix', price: '$14', vegetarian: true, spicy: false },
+    { name: 'Mini Dhokla', description: 'Steamed savory cakes with herbs', price: '$16', vegetarian: true, spicy: false },
+    { name: 'Watermelon Feta Salad', description: 'Chilled watermelon with feta and basil', price: '$15', vegetarian: true, spicy: false },
+    { name: 'Pani Puri', description: 'Crispy shells filled with tangy and spicy water', price: '$17', vegetarian: true, spicy: true },
+    { name: 'Carrot Soup', description: 'Smooth carrot soup with ginger', price: '$14', vegetarian: true, spicy: false },
+    { name: 'Seaweed Tempura', description: 'Crispy seaweed with soy dip', price: '$16', vegetarian: false, spicy: false },
+    { name: 'Eggplant Dip', description: 'Smoky mashed eggplant with bread', price: '$15', vegetarian: true, spicy: false },
+    { name: 'Beetroot Salad', description: 'Beets with light dressing and herbs', price: '$14', vegetarian: true, spicy: false },
+    { name: 'Popcorn Shrimp', description: 'Crispy shrimp bites', price: '$18', vegetarian: false, spicy: false },
+    { name: 'Avocado Bites', description: 'Creamy avocado with a bit of spice', price: '$16', vegetarian: true, spicy: true },
+    { name: 'Corn Cups', description: 'Sweet corn with butter and herbs', price: '$14', vegetarian: true, spicy: false }
   ],
   mains: [
-    { name: 'Butter Chicken Cannelloni', description: 'House-made pasta filled with butter chicken, makhani foam', price: '$24', vegetarian: false, spicy: true },
-    { name: 'Lamb Shank Rogan Josh', description: 'Slow-cooked lamb with Kashmiri spices, saffron risotto', price: '$32', vegetarian: false, spicy: true },
-    { name: 'Jackfruit Biryani', description: 'Young jackfruit with basmati rice, caramelized onions', price: '$22', vegetarian: true, spicy: false },
-    { name: 'Coconut Curry Ramen', description: 'Coconut milk broth with curry foam', price: '$20', vegetarian: true, spicy: true },
-    { name: 'Tamarind Glazed Duck Breast', description: 'With beetroot purée and black garlic dust', price: '$34', vegetarian: false, spicy: false },
-    { name: 'Blackened Salmon with Miso Foam', description: 'On edamame purée with sesame soil', price: '$28', vegetarian: false, spicy: false },
-    { name: 'Paneer Tikka Mille-Feuille', description: 'Layered puff pastry with paneer tikka and mint oil', price: '$23', vegetarian: true, spicy: true },
-    { name: 'Herb Crusted Sea Bass', description: 'Served with pea purée and dill vapor', price: '$30', vegetarian: false, spicy: false },
-    { name: 'Ratatouille Towers', description: 'Compressed vegetable stacks with saffron espuma', price: '$22', vegetarian: true, spicy: false },
-    { name: 'Venison with Juniper Smoke', description: 'On parsnip mash with cocoa nib dust', price: '$36', vegetarian: false, spicy: false },
-    { name: 'Chili Chocolate Mole Chicken', description: 'Dark chocolate mole with chili air', price: '$26', vegetarian: false, spicy: true },
-    { name: 'Quinoa & Edamame Terrine', description: 'With lemon verbena foam', price: '$20', vegetarian: true, spicy: false },
-    { name: 'Beef Rendang Bao', description: 'Soft bao buns with beef rendang and coconut mist', price: '$28', vegetarian: false, spicy: true }
+    { name: 'Butter Chicken Pasta', description: 'Pasta stuffed with butter chicken', price: '$24', vegetarian: false, spicy: true },
+    { name: 'Lamb Rogan Josh', description: 'Tender lamb with spiced sauce and rice', price: '$32', vegetarian: false, spicy: true },
+    { name: 'Jackfruit Biryani', description: 'Basmati rice with jackfruit and fried onions', price: '$22', vegetarian: true, spicy: false },
+    { name: 'Coconut Curry Noodles', description: 'Noodles in creamy coconut curry', price: '$20', vegetarian: true, spicy: true },
+    { name: 'Duck with Tamarind Sauce', description: 'Grilled duck with sweet tamarind glaze', price: '$34', vegetarian: false, spicy: false },
+    { name: 'Grilled Salmon', description: 'Salmon with miso and sesame', price: '$28', vegetarian: false, spicy: false },
+    { name: 'Paneer Puff Layers', description: 'Puff pastry with paneer tikka filling', price: '$23', vegetarian: true, spicy: true },
+    { name: 'Herb Fish', description: 'White fish with fresh herb sauce', price: '$30', vegetarian: false, spicy: false },
+    { name: 'Veggie Stack', description: 'Layered roasted vegetables', price: '$22', vegetarian: true, spicy: false },
+    { name: 'Venison with Parsnip Mash', description: 'Roasted venison with mash', price: '$36', vegetarian: false, spicy: false },
+    { name: 'Chocolate Chili Chicken', description: 'Chicken in mild chocolate and chili sauce', price: '$26', vegetarian: false, spicy: true },
+    { name: 'Quinoa Salad', description: 'Healthy quinoa with lemon dressing', price: '$20', vegetarian: true, spicy: false },
+    { name: 'Beef Bao Buns', description: 'Soft buns filled with beef stew', price: '$28', vegetarian: false, spicy: true }
   ],
   desserts: [
-    { name: 'Gulab Jamun Soufflé', description: 'Deconstructed gulab jamun with cardamom anglaise', price: '$14', vegetarian: true, spicy: false },
-    { name: 'Saffron Panna Cotta', description: 'With rose petal brittle, pistachio dust', price: '$12', vegetarian: true, spicy: false },
-    { name: 'Chocolate Chai Mousse', description: 'Dark chocolate mousse with masala chai reduction', price: '$16', vegetarian: true, spicy: false },
-    { name: 'Coconut Snow with Pineapple Gel', description: 'Shaved coconut ice with pineapple gel spheres', price: '$14', vegetarian: true, spicy: false },
-    { name: 'Mango Cardamom Parfait', description: 'Layered parfait with cardamom foam', price: '$15', vegetarian: true, spicy: false },
-    { name: 'Raspberry Rose Sphere', description: 'Chocolate shell filled with raspberry mousse', price: '$16', vegetarian: true, spicy: false },
-    { name: 'Chili Infused Chocolate Dome', description: 'Hot caramel pour reveal with chili mousse', price: '$18', vegetarian: true, spicy: true },
-    { name: 'Pistachio Baklava Cigars', description: 'With honey foam and saffron threads', price: '$14', vegetarian: true, spicy: false },
-    { name: 'Lemon Meringue Cloud', description: 'Nitrogen-frozen lemon foam with meringue shards', price: '$13', vegetarian: true, spicy: false },
-    { name: 'Black Sesame Panna Sphere', description: 'Encased panna cotta with sesame crunch', price: '$15', vegetarian: true, spicy: false },
-    { name: 'Espresso Tiramisu Jar', description: 'Coffee air and mascarpone snow', price: '$14', vegetarian: true, spicy: false }
+    { name: 'Gulab Jamun Soufflé', description: 'Fluffy cake with gulab jamun flavor', price: '$14', vegetarian: true, spicy: false },
+    { name: 'Saffron Panna Cotta', description: 'Creamy dessert with saffron', price: '$12', vegetarian: true, spicy: false },
+    { name: 'Chocolate Chai Mousse', description: 'Chocolate mousse with chai flavor', price: '$16', vegetarian: true, spicy: false },
+    { name: 'Coconut Ice with Pineapple', description: 'Shaved coconut ice and pineapple', price: '$14', vegetarian: true, spicy: false },
+    { name: 'Mango Parfait', description: 'Layered dessert with mango and cream', price: '$15', vegetarian: true, spicy: false },
+    { name: 'Raspberry Mousse', description: 'Soft raspberry mousse in chocolate shell', price: '$16', vegetarian: true, spicy: false },
+    { name: 'Chocolate Chili Dome', description: 'Chocolate dessert with a hint of chili', price: '$18', vegetarian: true, spicy: true },
+    { name: 'Pistachio Rolls', description: 'Sweet pastry rolls with pistachio', price: '$14', vegetarian: true, spicy: false },
+    { name: 'Lemon Meringue', description: 'Tangy lemon dessert with meringue', price: '$13', vegetarian: true, spicy: false },
+    { name: 'Black Sesame Pudding', description: 'Smooth sesame-flavored pudding', price: '$15', vegetarian: true, spicy: false },
+    { name: 'Tiramisu', description: 'Classic coffee-flavored dessert', price: '$14', vegetarian: true, spicy: false }
   ],
   drinks: [
-    { name: 'Masala Martini', description: 'Gin infused with whole spices, citrus twist', price: '$15', vegetarian: true, spicy: false },
-    { name: 'Mango Lassi Foam', description: 'Deconstructed lassi with saffron foam', price: '$10', vegetarian: true, spicy: false },
-    { name: 'Spiced Old Fashioned', description: 'Bourbon with garam masala syrup', price: '$18', vegetarian: true, spicy: false },
-    { name: 'Cucumber Mint Cooler', description: 'With mint vapor and lime pearls', price: '$12', vegetarian: true, spicy: false },
-    { name: 'Pineapple Chili Margarita', description: 'Pineapple juice with chili rim and foam', price: '$14', vegetarian: true, spicy: true },
-    { name: 'Rose Lemon Spritz', description: 'Rose essence, lemon, and prosecco mist', price: '$13', vegetarian: true, spicy: false },
-    { name: 'Lavender Cold Brew', description: 'Nitro cold brew with lavender foam', price: '$12', vegetarian: true, spicy: false },
-    { name: 'Smoky Tamarind Mule', description: 'Tamarind, ginger beer, and mezcal smoke', price: '$15', vegetarian: true, spicy: false },
-    { name: 'Saffron Gin Fizz', description: 'Gin with saffron air and tonic pearls', price: '$14', vegetarian: true, spicy: false },
-    { name: 'Cardamom Iced Tea', description: 'Cold brew tea with cardamom cloud', price: '$11', vegetarian: true, spicy: false },
-    { name: 'Matcha Coconut Latte', description: 'Matcha with coconut foam', price: '$12', vegetarian: true, spicy: false },
-    { name: 'Passionfruit Mojito Sphere', description: 'Encased mojito essence with passionfruit mist', price: '$14', vegetarian: true, spicy: false },
-    { name: 'Berry Hibiscus Cooler', description: 'With hibiscus vapor and berry pearls', price: '$12', vegetarian: true, spicy: false }
+    { name: 'Masala Martini', description: 'Spiced gin cocktail', price: '$15', vegetarian: true, spicy: false },
+    { name: 'Mango Lassi', description: 'Chilled mango yogurt drink', price: '$10', vegetarian: true, spicy: false },
+    { name: 'Spiced Old Fashioned', description: 'Bourbon with warm spices', price: '$18', vegetarian: true, spicy: false },
+    { name: 'Cucumber Mint Cooler', description: 'Refreshing cucumber and mint drink', price: '$12', vegetarian: true, spicy: false },
+    { name: 'Pineapple Chili Margarita', description: 'Sweet pineapple with mild chili', price: '$14', vegetarian: true, spicy: true },
+    { name: 'Rose Lemon Spritz', description: 'Rose-flavored sparkling drink', price: '$13', vegetarian: true, spicy: false },
+    { name: 'Lavender Cold Brew', description: 'Iced coffee with lavender', price: '$12', vegetarian: true, spicy: false },
+    { name: 'Tamarind Mule', description: 'Tamarind with ginger beer', price: '$15', vegetarian: true, spicy: false },
+    { name: 'Saffron Gin Fizz', description: 'Gin cocktail with saffron', price: '$14', vegetarian: true, spicy: false },
+    { name: 'Cardamom Iced Tea', description: 'Iced tea with cardamom flavor', price: '$11', vegetarian: true, spicy: false },
+    { name: 'Matcha Latte', description: 'Green tea latte with coconut', price: '$12', vegetarian: true, spicy: false },
+    { name: 'Passionfruit Mojito', description: 'Passionfruit with mint and lime', price: '$14', vegetarian: true, spicy: false },
+    { name: 'Berry Hibiscus Cooler', description: 'Berry drink with hibiscus flavor', price: '$12', vegetarian: true, spicy: false }
   ]
 };
+
 
 
   const categories = [
