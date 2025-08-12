@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { FaBars, FaTimes, FaUtensils, FaWineGlassAlt } from 'react-icons/fa';
 import { MdDeliveryDining } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
-import Logo from '../assets/logo.png'; // Replace with your restaurant logo
+import Logo from '../assets/logo.png';
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
@@ -17,30 +17,39 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '/' },
+    { name: 'Home', href: '/', icon: null },
     { name: 'Menu', href: '/menu' },
-    { name: 'Gallery', href: '/gallery' },
+    { name: 'Gallery', href: '/gallery', icon: null },
     { name: 'Delivery', href: '/delivery' },
-    { name: 'Contact', href: '/contact' }
+    { name: 'Contact', href: '/contact', icon: null }
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-saffron-700 shadow-lg' : 'bg-saffron-600/90 backdrop-blur-sm'}`}>
+    <nav 
+      className="fixed w-full z-50 transition-all duration-500" 
+      style={{ 
+        backgroundColor: scrolled ? 'rgba(204, 85, 0, 0.95)' : 'rgba(204, 102, 0, 0.9)',
+        backdropFilter: 'blur(8px)'
+      }}
+    >
       {/* Top decorative border */}
-      <div className="h-1 bg-gradient-to-r from-saffron-400 via-turmeric-500 to-saffron-400"></div>
+      <div 
+        className="h-1 w-full"
+        style={{
+          background: 'linear-gradient(to right, #ff9933, #ffcc00, #ff9933)'
+        }}
+      ></div>
       
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-3">
-          {/* Logo with cultural motif */}
+          {/* Logo */}
           <div className="flex items-center space-x-2">
             <img 
               src={Logo} 
-              alt="Royal Spice Logo" 
-              className={`h-12 transition-all duration-300 ${scrolled ? 'h-10' : 'h-12'}`}
+              alt="Farzi Cafe Logo" 
+              className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-12'}`}
+              style={{ width: 'auto' }}
             />
-            <span className="hidden md:block text-white font-serif text-xl font-bold tracking-wider">
-              Farzi Cafe
-            </span>
           </div>
 
           {/* Desktop Navigation */}
@@ -49,19 +58,30 @@ export default function Navbar() {
               <li key={item.name}>
                 <a
                   href={item.href}
-                  className="flex items-center px-4 py-2 text-white hover:bg-saffron-500 rounded-lg transition-all duration-300 group"
+                  className="flex items-center px-4 py-2 rounded-lg transition-all duration-300 group"
+                  style={{
+                    color: '#ffffff',
+                    backgroundColor: 'transparent'
+                  }}
                 >
-                  {item.icon && item.icon}
+                  {item.icon}
                   <span>{item.name}</span>
-                  <span className="block h-0.5 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                  <span 
+                    className="block h-0.5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
+                    style={{ backgroundColor: '#ffffff' }}
+                  ></span>
                 </a>
               </li>
             ))}
-            {/* Special CTA Button */}
+            {/* Reserve Table Button */}
             <li>
               <a
-                href="#reservations"
-                className="ml-2 flex items-center px-4 py-2 bg-white text-saffron-700 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-md hover:shadow-lg"
+                href="/reservations"
+                className="ml-2 flex items-center px-4 py-2 font-medium rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+                style={{
+                  backgroundColor: '#ffffff',
+                  color: '#cc5500',
+                }}
               >
                 <FaWineGlassAlt className="mr-2" />
                 Reserve Table
@@ -71,9 +91,10 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-white focus:outline-none"
+            className="md:hidden p-2 focus:outline-none"
             onClick={() => setNavOpen(!navOpen)}
             aria-expanded={navOpen}
+            style={{ color: '#ffffff' }}
           >
             {navOpen ? (
               <FaTimes className="h-6 w-6" />
@@ -83,7 +104,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu with Indian-inspired design */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {navOpen && (
             <motion.div
@@ -91,7 +112,8 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden bg-saffron-700 rounded-b-lg shadow-xl"
+              className="md:hidden overflow-hidden rounded-b-lg shadow-xl"
+              style={{ backgroundColor: '#cc5500' }}
             >
               <ul className="py-2 px-4 space-y-1">
                 {navItems.map((item, index) => (
@@ -103,10 +125,13 @@ export default function Navbar() {
                   >
                     <a
                       href={item.href}
-                      className="flex items-center px-4 py-3 text-white hover:bg-saffron-600 rounded-lg transition-colors duration-200"
+                      className="flex items-center px-4 py-3 rounded-lg transition-colors duration-200"
+                      style={{
+                        color: '#ffffff',
+                      }}
                       onClick={() => setNavOpen(false)}
                     >
-                      {item.icon && item.icon}
+                      {item.icon}
                       <span>{item.name}</span>
                     </a>
                   </motion.li>
@@ -115,11 +140,16 @@ export default function Navbar() {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
-                  className="pt-2 border-t border-saffron-500/30"
+                  className="pt-2"
+                  style={{ borderTop: '1px solid rgba(255, 204, 0, 0.3)' }}
                 >
                   <a
-                    href="#reservations"
-                    className="flex items-center justify-center px-4 py-3 bg-white text-saffron-700 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                    href="/reservations"
+                    className="flex items-center justify-center px-4 py-3 font-medium rounded-lg transition-colors duration-200"
+                    style={{
+                      backgroundColor: '#ffffff',
+                      color: '#cc5500',
+                    }}
                     onClick={() => setNavOpen(false)}
                   >
                     <FaWineGlassAlt className="mr-2" />
